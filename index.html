@@ -14,12 +14,32 @@
     <br>
     <div class = "button" >
         <button onclick="change()" class = "button">NEXT</button>
-        <center>
-            <h3>ADD IMAGE</h3>
-            <input type="file" id="myFile" name="filename">
-            <button onclick="add()" class = "button">ADD</button>
-        </center>
+        <p><center><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></center></p>
+        <p><label for="file" style="cursor: pointer;" class = "upload">Upload Image</label></p>
+        <p><img id="output" width="200" /></p>
     </div>
-    <script type="text/javascript" src="script.js"></script>
+    <br>
+    
+
+<script type="text/javascript">
+    var ind = 1;
+        var image = document.getElementById('pictures');
+        var imgArray = ["g1.jpg","g2.jpg","g3.jpg","g4.jpg","g5.jpg","g6.jpg"];
+
+        function change() {
+            console.log("ind",ind);
+            console.log("L",imgArray.length);
+            image.setAttribute("src",imgArray[ind]);
+            ind = ind + 1;
+            if (ind > imgArray.length - 1) {
+                ind = 0;
+            }
+        }
+var loadFile = function(event) {
+	var image = document.getElementById('output');
+    imgArray.push(URL.createObjectURL(event.target.files[0]));
+	
+};
+</script>
 </body>
 </html>
